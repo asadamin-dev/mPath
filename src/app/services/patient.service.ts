@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { HttpService } from './http.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -8,21 +9,27 @@ import { HttpService } from './http.service';
 export class PatientService {
   private endpoint = 'Patients'; // API endpoint
 
-  constructor(private httpService: HttpService) {}
+
+  constructor(private httpService: HttpService) { }
 
   createPatient(data: any): Observable<any> {
-    return this.httpService.post<any>(this.endpoint, data);
+    return this.httpService.post(this.endpoint, data);
   }
 
   getPatients(): Observable<any> {
-    return this.httpService.get<any>(this.endpoint);
+    return this.httpService.get(this.endpoint);
   }
 
+  getPatientById(id: string): Observable<any> {
+    return this.httpService.get(`${this.endpoint}/${id}`,);
+  }
+
+
   updatePatient(id: string, data: any): Observable<any> {
-    return this.httpService.put<any>(`${this.endpoint}/${id}`, data);
+    return this.httpService.put(`${this.endpoint}/${id}`, data);
   }
 
   deletePatient(id: string): Observable<any> {
-    return this.httpService.delete<any>(`${this.endpoint}/${id}`);
+    return this.httpService.delete(`${this.endpoint}/${id}`);
   }
 }

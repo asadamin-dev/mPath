@@ -11,18 +11,19 @@ private endpoint = 'Recommendations'; // API endpoint
   constructor(private httpService: HttpService) {}
 
   createRecommendation(data: any): Observable<any> {
-    return this.httpService.post<any>(this.endpoint, data);
+    return this.httpService.post(this.endpoint, data);
   }
 
   getRecommendation(): Observable<any> {
-    return this.httpService.get<any>(this.endpoint);
+    return this.httpService.get(this.endpoint);
   }
+  
 
   updateRecommendation(id: string, data: any): Observable<any> {
-    return this.httpService.put<any>(`${this.endpoint}/${id}`, data);
+    return this.httpService.put(`${this.endpoint}/${id}`, data);
   }
 
   deleteRecommendation(id: string): Observable<any> {
-    return this.httpService.delete<any>(`${this.endpoint}/${id}`);
+    return this.httpService.delete(`${this.endpoint}/${id}`);
   }
 }

@@ -1,1 +1,50 @@
-<p>patient-base works!</p>
+<div class="patient-container">
+    <div class="left-form">
+      <mat-card>
+        <mat-card-title>Patient Form</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="patientForm">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Patient Name</mat-label>
+              <input matInput formControlName="name" />
+            </mat-form-field>
+
+  
+  
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Date of Birth</mat-label>
+              <input matInput [matDatepicker]="pickerDOB" formControlName="dob" placeholder="Choose a date" />
+              <mat-datepicker-toggle matSuffix [for]="pickerDOB"></mat-datepicker-toggle>
+              <mat-datepicker #pickerDOB></mat-datepicker>
+            </mat-form-field>
+  
+            <!-- Last Visit -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Last Visit</mat-label>
+              <input matInput [matDatepicker]="pickerLastVisit" formControlName="lastVisit" placeholder="Choose a date" />
+              <mat-datepicker-toggle matSuffix [for]="pickerLastVisit"></mat-datepicker-toggle>
+              <mat-datepicker #pickerLastVisit></mat-datepicker>
+            </mat-form-field>
+  
+            <!-- Next Visit -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Next Visit</mat-label>
+              <input matInput [matDatepicker]="pickerNextVisit" formControlName="nextVisit" placeholder="Choose a date" />
+              <mat-datepicker-toggle matSuffix [for]="pickerNextVisit"></mat-datepicker-toggle>
+              <mat-datepicker #pickerNextVisit></mat-datepicker>
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" formControlName="email" />
+            </mat-form-field>
+  
+          
+  
+            
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

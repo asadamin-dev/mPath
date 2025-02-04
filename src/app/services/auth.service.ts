@@ -9,7 +9,7 @@ import { Observable, tap } from 'rxjs';
 export class AuthService {
   private endpoint = 'Auth';
 
-  constructor(private router: Router, private http: HttpService) {}
+  constructor(private router: Router, private http: HttpService) { }
 
   login(cred: { email: string; password: string }): Observable<any> {
     return this.http.post(`${this.endpoint}/Login`, cred);

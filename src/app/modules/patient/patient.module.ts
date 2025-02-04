@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PatientRoutingModule } from './patient-routing.module';
 import { PatientBaseComponent } from './components/patient-base/patient-base.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { PatientBaseComponent } from './components/patient-base/patient-base.com
   ],
   imports: [
     CommonModule,
-    PatientRoutingModule
+    PatientRoutingModule,
+    SharedModule
   ]
 })
 export class PatientModule { }

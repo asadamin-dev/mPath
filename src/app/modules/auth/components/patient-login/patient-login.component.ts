@@ -31,6 +31,8 @@ export class PatientLoginComponent {
 
       console.log('Login successful:', response);
       localStorage.setItem('token', response.token);
+      localStorage.setItem('userId', response.userId);
+
       this.router.navigate(['/patient']);
     } catch (err) {
       console.error('Login failed:', err);

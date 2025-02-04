@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecommendationsService } from '../../../services/recommendations.service';
+import { firstValueFrom } from 'rxjs';  
 
 export interface Recommendation {
   patientId: number;
@@ -15,15 +16,21 @@ export interface Recommendation {
 export class RecomendationComponent implements OnInit {
 
   newRecommendation: string = '';
-  id = '';  // Consider using a number if possible (e.g., id: number = 0;)
+  id = '';  
   recommendations: Recommendation[] = [];
 
   constructor(private recommendationService: RecommendationsService) {}
 
-  ngOnInit() {
-    this.recommendationService.getRecommendation().subscribe(data => {
-      this.recommendations = data;
-    });
+  async ngOnInit() {
+    try {
+      console.log('ngOnInit called. Fetching recommendations...');
+      this.recommendations = await firstValueFrom(
+        this.recommendationService.getRecommendation()
+      );
+      console.log('Received recommendations:', this.recommendations);
+    } catch (err) {
+      console.error('Error fetching recommendations:', err);
+    }
   }
 
   addRecommendation(): void {
@@ -34,7 +41,13 @@ export class RecomendationComponent implements OnInit {
         description: trimmedValue,
         isCompleted: false
       };
-      this.recommendationService.createRecommendation(newRec);
+      this.recommendationService.createRecommendation(newRec).subscribe({
+        next: (response) => {
+          console.log('Recommendation added:', response);
+          this.recommendations.push(newRec);
+        },
+        error: (err) => console.error('Error adding recommendation:', err)
+      });
       this.newRecommendation = '';
     }
   }
