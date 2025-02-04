@@ -7,12 +7,22 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private userRole: string | null = null;
+  private endpoint = 'Auth';
 
   constructor(private router: Router, private http: HttpService) {}
 
-  login(credentials: { username: string; password: string }): Observable<any> {
-    return this.http.post('/auth/login', credentials);
+  login(credentials: {
+    credentials: string;
+    password: string;
+  }): Observable<any> {
+    return this.http.post(`${this.endpoint}/Login`, credentials);
+  }
+
+  patientLogin(credentials: {
+    credentials: string;
+    password: string;
+  }): Observable<any> {
+    return this.http.post(`${this.endpoint}/Login/Patient`, credentials);
   }
 
   logout() {

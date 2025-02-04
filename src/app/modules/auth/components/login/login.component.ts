@@ -21,7 +21,7 @@ export class LoginComponent {
     }
 
     this.authService
-      .login({ username: this.username, password: this.password })
+      .login({ credentials: this.username, password: this.password })
       .subscribe({
         next: (response) => {
           console.log('Login successful:', response);
@@ -50,7 +50,7 @@ export class LoginComponent {
       });
   }
 
-  goto(route:string ){
+  goto(route: string) {
     this.router.navigate([route]);
   }
 }
