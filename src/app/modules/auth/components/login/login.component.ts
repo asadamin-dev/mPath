@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +12,41 @@ export class LoginComponent {
   password = '';
   hidePassword = true; // toggles password visibility
 
+  constructor(private authService: AuthService, private router: Router) {}
+
   onSubmit() {
-    // Placeholder login logic:
-    if (this.username && this.password) {
-      console.log('Logging in with', this.username, this.password);
-      // Implement your authentication logic here
-    } else {
-      console.log('Please enter username and password');
+    if (!this.username || !this.password) {
+      console.log('Please enter both username and password');
+      return;
     }
+
+    this.authService
+      .login({ username: this.username, password: this.password })
+      .subscribe({
+        next: (response) => {
+          console.log('Login successful:', response);
+
+          localStorage.setItem('token', response.token);
+
+          // Navigate based on role
+          const role = response.role;
+          switch (role) {
+            case 'admin':
+              this.router.navigate(['/admin']);
+              break;
+            case 'healthcare':
+              this.router.navigate(['/healthcare']);
+              break;
+            case 'patient':
+              this.router.navigate(['/patient']);
+              break;
+            default:
+              this.router.navigate(['/auth']);
+          }
+        },
+        error: (err) => {
+          console.error('Login failed:', err);
+        },
+      });
   }
 }
