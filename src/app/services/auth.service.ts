@@ -11,18 +11,12 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpService) {}
 
-  login(credentials: {
-    credentials: string;
-    password: string;
-  }): Observable<any> {
-    return this.http.post(`${this.endpoint}/Login`, credentials);
+  login(cred: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.endpoint}/Login`, cred);
   }
 
-  patientLogin(credentials: {
-    credentials: string;
-    password: string;
-  }): Observable<any> {
-    return this.http.post(`${this.endpoint}/Login/Patient`, credentials);
+  patientLogin(cred: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.endpoint}/Login/Patient`, cred);
   }
 
   logout() {

@@ -17,20 +17,21 @@ export class PatientLoginComponent {
 
   async onSubmit() {
     if (!this.email || !this.password) {
-      console.log('Please enter both username and password');
+      console.log('Please enter both email and password');
       return;
     }
 
     try {
       const response = await firstValueFrom(
         this.authService.patientLogin({
-          credentials: this.email,
+          email: this.email,
           password: this.password,
         })
       );
 
       console.log('Login successful:', response);
       localStorage.setItem('token', response.token);
+      this.router.navigate(['/patient']);
     } catch (err) {
       console.error('Login failed:', err);
     }

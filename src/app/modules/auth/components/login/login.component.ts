@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../../services/auth.service';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -8,46 +9,31 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  username = '';
+  email = '';
   password = '';
   hidePassword = true; // toggles password visibility
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onSubmit() {
-    if (!this.username || !this.password) {
-      console.log('Please enter both username and password');
+  async onSubmit() {
+    if (!this.email || !this.password) {
+      console.log('Please enter both email and password');
       return;
     }
 
-    this.authService
-      .login({ credentials: this.username, password: this.password })
-      .subscribe({
-        next: (response) => {
-          console.log('Login successful:', response);
+    try {
+      const response = await firstValueFrom(
+        this.authService.login({
+          email: this.email,
+          password: this.password,
+        })
+      );
 
-          localStorage.setItem('token', response.token);
-
-          // Navigate based on role
-          const role = response.role;
-          switch (role) {
-            case 'admin':
-              this.router.navigate(['/admin']);
-              break;
-            case 'healthcare':
-              this.router.navigate(['/healthcare']);
-              break;
-            case 'patient':
-              this.router.navigate(['/patient']);
-              break;
-            default:
-              this.router.navigate(['/auth']);
-          }
-        },
-        error: (err) => {
-          console.error('Login failed:', err);
-        },
-      });
+      console.log('Login successful:', response);
+      localStorage.setItem('token', response.token);
+    } catch (err) {
+      console.error('Login failed:', err);
+    }
   }
 
   goto(route: string) {

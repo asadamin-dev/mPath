@@ -1,43 +1,43 @@
 <div class="login-container">
-    <!-- Left side: The login form area -->
-    <div class="login-form">
-        <div class="brand-header">
-            <img src="assets/logo.png" alt="mPATH Logo" class="logo" />
-            <h2>LOGIN</h2>
-            <p>How to get started lorem ipsum dolor?</p>
-        </div>
-
-        <mat-card>
-            <mat-card-content>
-                <form (ngSubmit)="onSubmit()">
-                    <!-- Username field -->
-                    <mat-form-field appearance="outline" class="full-width">
-                        <mat-label>Username</mat-label>
-                        <input matInput [(ngModel)]="username" name="username" required />
-                    </mat-form-field>
-
-                    <!-- Password field -->
-                    <mat-form-field appearance="outline" class="full-width">
-                        <mat-label>Password</mat-label>
-                        <input matInput [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="password"
-                            name="password" required />
-                        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
-                            [attr.aria-label]="'Hide password'">
-                            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button>
-                    </mat-form-field>
-
-                    <a (click)="goto('/auth/patient-login')">login as patient</a>
-
-                    <!-- Login button -->
-                    <button mat-raised-button color="primary" class="full-width">
-                        Login Now
-                    </button>
-                </form>
-            </mat-card-content>
-        </mat-card>
+  <!-- Left side: The login form area -->
+  <div class="login-form">
+    <div class="brand-header">
+      <img src="assets/logo.png" alt="mPATH Logo" class="logo" />
+      <h2>LOGIN</h2>
+      <p>How to get started lorem ipsum dolor?</p>
     </div>
-    <div class="login-illustration">
-        <img src="assets/doc-pic.png" alt="Doctor with Family" class="doc-img" />
-    </div>
+
+    <mat-card>
+      <mat-card-content>
+        <form (ngSubmit)="onSubmit()">
+          <!-- Username field -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="email" name="email" required />
+          </mat-form-field>
+
+          <!-- Password field -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="password" name="password"
+              required />
+            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+              [attr.aria-label]="'Hide password'">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <a (click)="goto('/auth/patient-login')">login as patient</a>
+
+          <!-- Login button -->
+          <button mat-raised-button color="primary" class="full-width">
+            Login Now
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="login-illustration">
+    <img src="assets/doc-pic.png" alt="Doctor with Family" class="doc-img" />
+  </div>
 </div>
