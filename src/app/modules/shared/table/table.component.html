@@ -7,29 +7,40 @@
   </mat-form-field>
 </div>
 
-<table mat-table [dataSource]="tableData" matSort class="mat-elevation-z8">
+<!-- Responsive Table Container -->
+<div class="table-container">
+  <table mat-table [dataSource]="tableData" matSort class="mat-elevation-z8">
 
-  <!-- Dynamic Column Definitions -->
-  <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ column | titlecase }} </th>
-    <td mat-cell *matCellDef="let element">
-      <ng-container *ngIf="!isToggleColumn(column); else toggleTemplate">
-        {{ element[column] }}
-      </ng-container>
-    </td>
-  </ng-container>
+    <!-- Dynamic Column Definitions -->
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ column | titlecase }} </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="!isToggleColumn(column); else toggleTemplate">
+          {{ element[column] }}
+        </ng-container>
+      </td>
+    </ng-container>
 
-  <!-- Toggle Button for Actions -->
-  <ng-template #toggleTemplate>
-    <mat-slide-toggle></mat-slide-toggle>
-    <button mat-icon-button>
-      <mat-icon>more_vert</mat-icon>
-    </button>
-  </ng-template>
+    <!-- Toggle Button for Actions -->
+    <ng-template #toggleTemplate>
+      <div class="flex-align">
+        <mat-slide-toggle></mat-slide-toggle>
+        <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+    </ng-template>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item (click)="edit()" >Edit</button>
+      <button mat-menu-item (click)="delete()" >Delete</button>
+    </mat-menu>
+  
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
 
 <!-- Paginator -->
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

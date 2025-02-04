@@ -31,4 +31,12 @@ export class TableComponent {
   isToggleColumn(column: string): boolean {
     return column === 'actions';
   }
+
+  edit(){
+
+  }
+
+  delete(){
+    
+  }
 }
