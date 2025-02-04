@@ -12,11 +12,11 @@
 
     <div class="recommendations">
       <div *ngFor="let recommendation of recommendations; let i = index" class="recommendation-item">
-        <mat-checkbox [(ngModel)]="recommendation.checked">
-          {{ recommendation.name }}
+        <mat-checkbox [(ngModel)]="recommendation.isCompleted">
+          {{ recommendation.description }}
         </mat-checkbox>
         <button mat-icon-button color="warn" (click)="deleteRecommendation(i)"
-          [attr.aria-label]="'Delete ' + recommendation.name">
+          [attr.aria-label]="'Delete ' + recommendation.description">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
