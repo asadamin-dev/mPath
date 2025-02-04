@@ -12,8 +12,8 @@ const routes: Routes = [
         path: 'admin',
         loadChildren: () =>
           import('../admin/admin.module').then((m) => m.AdminModule),
-        // canActivate: [authGuard],
-        data: { roles: ['admin'] },
+        canActivate: [authGuard],
+        data: { roles: [1] },
       },
       {
         path: 'healthcare',
@@ -21,17 +21,15 @@ const routes: Routes = [
           import(
             '../health-care-professional/health-care-professional.module'
           ).then((m) => m.HealthCareProfessionalModule),
-        // canActivate: [authGuard],
-        data: { roles: ['healthcare'] },
+        canActivate: [authGuard],
+        data: { roles: [2] },
       },
       {
         path: 'patient',
         loadChildren: () =>
           import('../patient/patient.module').then((m) => m.PatientModule),
-        // canActivate: [authGuard],
-        data: { roles: ['patient'] },
+        canActivate: [authGuard],
       },
-      // { path: '', redirectTo: 'admin', pathMatch: 'full' },
     ],
   },
 ];

@@ -5,7 +5,7 @@ import { HealthcareProfessionalsComponent } from './components/healthcare-profes
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'form',
     component: AdminBaseComponent,
   },
 
@@ -13,12 +13,15 @@ const routes: Routes = [
     path: 'professionals',
     component: HealthcareProfessionalsComponent,
   },
-
-
+  {
+    path: '',
+    redirectTo: 'professionals',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

@@ -29,8 +29,15 @@ export class LoginComponent {
         })
       );
 
-      console.log('Login successful:', response);
       localStorage.setItem('token', response.token);
+      localStorage.setItem('roleId', response.roleId);
+      localStorage.setItem('userId', response.userid);
+
+      if (response.roleId == 1) {
+        this.router.navigate(['/admin']);
+      } else if (response.roleId == 2) {
+        this.router.navigate(['/healthcare']);
+      }
     } catch (err) {
       console.error('Login failed:', err);
     }

@@ -12,10 +12,17 @@ export class HttpService {
 
   // Common HTTP Headers
   private getHeaders(): HttpHeaders {
-    return new HttpHeaders({
+    const token = localStorage.getItem('token');
+
+    let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Allow-Origin': '*',
     });
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+
+    return headers;
   }
 
   get<T>(endpoint: string, params: any = {}): Observable<T> {
