@@ -1,66 +1,72 @@
 <div class="patient-container">
-    
-    <div class="left-form">
-      <mat-card>
-        <mat-card-title>Patient Form</mat-card-title>
-        <mat-card-content>
-          <form>
-             
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Patient Name</mat-label>
-              <input matInput />
-            </mat-form-field>
-  
-            <!-- Contact No. -->
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Contact No.</mat-label>
-              <input matInput />
-            </mat-form-field>
-  
-            <!-- Date of birth -->
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Date of Birth</mat-label>
-              <input matInput type="date" />
-            </mat-form-field>
-  
-            <!-- Last Visit -->
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Last Visit</mat-label>
-              <input matInput type="date" />
-            </mat-form-field>
-  
-            <!-- Next Visit -->
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Next Visit</mat-label>
-              <input matInput type="date" />
-            </mat-form-field>
 
-             <!-- Email -->
-             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Email</mat-label>
-              <input matInput type="email" />
-            </mat-form-field>
-  
-            <!-- Password -->
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Password</mat-label>
-              <input matInput type="password" />
-            </mat-form-field>
-  
-            <!-- Delete Toggle -->
-            <div class="buttons">
-              <button mat-raised-button color="warn">Delete</button>
-              <button mat-raised-button color="primary">Save</button>
-            </div>
-            
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  
-    <!-- Right side: Recommendation -->
-    <div class="right-recommendation">
-        <app-recomendation></app-recomendation>
-    </div>
+  <div class="left-form">
+    <mat-card>
+      <mat-card-title>Patient Form</mat-card-title>
+      <mat-card-content>
+        <form>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Patient Name</mat-label>
+            <input matInput />
+          </mat-form-field>
+
+          <!-- Contact No. -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Contact No.</mat-label>
+            <input matInput />
+          </mat-form-field>
+
+          <!-- Date of Birth -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="pickerDOB" placeholder="Choose a date" />
+            <mat-datepicker-toggle matSuffix [for]="pickerDOB"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDOB></mat-datepicker>
+          </mat-form-field>
+
+          <!-- Last Visit -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Last Visit</mat-label>
+            <input matInput [matDatepicker]="pickerLastVisit" placeholder="Choose a date" />
+            <mat-datepicker-toggle matSuffix [for]="pickerLastVisit"></mat-datepicker-toggle>
+            <mat-datepicker #pickerLastVisit></mat-datepicker>
+          </mat-form-field>
+
+          <!-- Next Visit -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Next Visit</mat-label>
+            <input matInput [matDatepicker]="pickerNextVisit" placeholder="Choose a date" />
+            <mat-datepicker-toggle matSuffix [for]="pickerNextVisit"></mat-datepicker-toggle>
+            <mat-datepicker #pickerNextVisit></mat-datepicker>
+          </mat-form-field>
+
+
+          <!-- Email -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" />
+          </mat-form-field>
+
+          <!-- Password -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" />
+          </mat-form-field>
+
+          <!-- Delete Toggle -->
+          <div class="buttons">
+            <button mat-raised-button color="warn">Delete</button>
+            <button mat-raised-button color="primary">Save</button>
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
-  
+
+  <!-- Right side: Recommendation -->
+  <div class="right-recommendation">
+    <app-recomendation></app-recomendation>
+  </div>
+</div>
