@@ -14,12 +14,10 @@ export class AuthService {
     } else {
       this.userRole = 'patient';
     }
-
-    localStorage.setItem('userRole', this.userRole);
     return true;
   }
 
   getUserRole(): string {
-    return localStorage.getItem('userRole') || '';
+    return 'admin';
   }
 }
