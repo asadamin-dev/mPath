@@ -1,5 +1,7 @@
-import { Component, HostListener } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +11,21 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   isMobile = false;
 
-  constructor(private router: Router) {
-    this.checkScreenSize();
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router,
+    private authService: AuthService
+  ) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.checkScreenSize(); // ✅ Only runs if in browser
+    }
   }
 
   @HostListener('window:resize', [])
   checkScreenSize() {
-    this.isMobile = window.innerWidth <= 768;
+    if (isPlatformBrowser(this.platformId)) {
+      this.isMobile = window.innerWidth <= 768; // ✅ Safe to access window
+    }
   }
 
   changePassword() {
@@ -23,7 +33,6 @@ export class NavbarComponent {
   }
 
   logout() {
-    localStorage.clear();
-    this.router.navigate(['/auth']);
+    this.authService.logout();
   }
 }

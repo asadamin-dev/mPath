@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root',
@@ -6,18 +8,18 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   private userRole: string | null = null;
 
-  login(user: { email: string; password: string }): boolean {
-    if (user.email === 'admin@example.com') {
-      this.userRole = 'admin';
-    } else if (user.email === 'healthcare@example.com') {
-      this.userRole = 'healthcare';
-    } else {
-      this.userRole = 'patient';
-    }
-    return true;
+  constructor(private router: Router, private http: HttpService) {}
+
+  login(user: { email: string; password: string }) {
+    this.http.post;
   }
 
   getUserRole(): string {
     return 'healthcare';
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/auth']);
   }
 }
