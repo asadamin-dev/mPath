@@ -12,7 +12,7 @@ const routes: Routes = [
         path: 'admin',
         loadChildren: () =>
           import('../admin/admin.module').then((m) => m.AdminModule),
-        canActivate: [authGuard],
+        // canActivate: [authGuard],
         data: { roles: ['admin'] },
       },
       {
@@ -21,14 +21,14 @@ const routes: Routes = [
           import(
             '../health-care-professional/health-care-professional.module'
           ).then((m) => m.HealthCareProfessionalModule),
-        canActivate: [authGuard],
+        // canActivate: [authGuard],
         data: { roles: ['healthcare'] },
       },
       {
         path: 'patient',
         loadChildren: () =>
           import('../patient/patient.module').then((m) => m.PatientModule),
-        canActivate: [authGuard],
+        // canActivate: [authGuard],
         data: { roles: ['patient'] },
       },
       // { path: '', redirectTo: 'admin', pathMatch: 'full' },
