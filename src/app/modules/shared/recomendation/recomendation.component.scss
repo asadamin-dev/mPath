@@ -1,41 +1,50 @@
 mat-card {
-    background-color: transparent;
-    box-shadow: none;
-  }
+  background-color: transparent;
+  box-shadow: none;
 
-  .right-recommendation {
+}
+
+.right-recommendation {
+  flex: 1;
+  background-color: #19A09E14;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.recommendation-item {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+
+  mat-checkbox {
     flex: 1;
-    background-color: #19A09E14;
-    padding: 1rem;
-    border-radius: 8px;
   }
 
-  .full-width {
-    width: 100%;
-  }
-  
-  .recommendation-item {
-    display: flex;
-    align-items: center;
-    margin: 0.5rem 0;
-  
-    mat-checkbox {
-      flex: 1;
-    }
-  }
+}
 
-  mat-card-title {
-    width: 127px;
-    height: 30px;
-    background: #0C6EB7;
-    border-radius: 6px;
-    color: #FFFFFF;
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 19.36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
+mat-card-title {
+  width: 127px;
+  height: 30px;
+  background: #0C6EB7;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.recommendations {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}

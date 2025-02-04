@@ -39,7 +39,7 @@ mat-card {
 
 .full-width {
   width: 45%;
-  margin: 0px 5px ;
+  margin: 0px 5px;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -47,4 +47,9 @@ mat-card {
 
 }
 
- 
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
