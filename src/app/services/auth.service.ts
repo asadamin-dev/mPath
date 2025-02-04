@@ -18,6 +18,6 @@ export class AuthService {
   }
 
   getUserRole(): string {
-    return 'admin';
+    return 'healthcare';
   }
 }

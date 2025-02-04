@@ -6,12 +6,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecomendationComponent } from './recomendation/recomendation.component';
+import { TableComponent } from './table/table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
-  declarations: [NavbarComponent],
+  declarations: [
+    NavbarComponent,
+    RecomendationComponent,
+    TableComponent
+  ],
   imports: [
     CommonModule,
     MatInputModule,
@@ -23,6 +33,11 @@ import { MatMenuModule } from '@angular/material/menu';
     ReactiveFormsModule,
     MatToolbarModule,
     MatMenuModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatTableModule,
+    MatPaginatorModule,
+
   ],
   exports: [
     MatInputModule,
@@ -30,9 +45,14 @@ import { MatMenuModule } from '@angular/material/menu';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    FormsModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    FormsModule,         
     ReactiveFormsModule,
     NavbarComponent,
-  ],
+    RecomendationComponent,
+    TableComponent,
+    MatPaginatorModule,
+  ]
 })
 export class SharedModule {}

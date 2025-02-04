@@ -9,7 +9,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   const userRole = authService.getUserRole();
   const allowedRoles = route.data['roles'] as string[];
 
-  debugger;
+  
 
   if (userRole && allowedRoles.includes(userRole)) {
     router.navigate([`/${userRole}`]);
