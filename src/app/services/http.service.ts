@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HttpService {
-  private baseUrl = 'https://your-api-url.com'; // Set your API base URL
+  private baseUrl = 'mpath.softoteam.com/api';
 
   constructor(private http: HttpClient) {}
 
