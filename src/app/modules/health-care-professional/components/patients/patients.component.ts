@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patients',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './patients.component.scss'
 })
 export class PatientsComponent {
+
+  constructor(public router: Router){
+
+  }
 
    
   columns = ['Id', 'Name', 'Contact', 'DOB', 'Last_Visit', 'Next_Visit', 'actions'];
@@ -22,6 +27,9 @@ export class PatientsComponent {
     { Id: '#987654321', Name: 'Jeff Bezos', Contact: '+1 987 654 3210', DOB: '5/8/2000', Last_Visit: '05/02/2025', Next_Visit: '18/02/2025' }
   ];
 
+  goto(route:string){
+    this.router.navigate([route]);
+  }
  
 
   
