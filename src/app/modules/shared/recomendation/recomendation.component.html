@@ -1,25 +1,25 @@
 <mat-card>
-    <mat-card-title>Recommendation</mat-card-title>
-    <mat-card-content>
-      <!-- "Add New" field -->
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Add New</mat-label>
-        <input matInput />
-      </mat-form-field>
+  <mat-card-title>Recommendation</mat-card-title>
+  <mat-card-content>
+    <!-- "Add New" field -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Add New</mat-label>
+      <input matInput #newItem [(ngModel)]="newRecommendation" />
+      <button mat-icon-button matSuffix (click)="addRecommendation()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-form-field>
 
-      <!-- Example recommendation items -->
-      <div class="recommendation-item">
-        <mat-checkbox>Diabetic Test</mat-checkbox>
-        <button mat-icon-button color="warn" aria-label="Delete Diabetic Test">
+    <div class="recommendations">
+      <div *ngFor="let recommendation of recommendations; let i = index" class="recommendation-item">
+        <mat-checkbox [(ngModel)]="recommendation.checked">
+          {{ recommendation.name }}
+        </mat-checkbox>
+        <button mat-icon-button color="warn" (click)="deleteRecommendation(i)"
+          [attr.aria-label]="'Delete ' + recommendation.name">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
-
-      <div class="recommendation-item">
-        <mat-checkbox>Blood Test</mat-checkbox>
-        <button mat-icon-button color="warn" aria-label="Delete Blood Test">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>
