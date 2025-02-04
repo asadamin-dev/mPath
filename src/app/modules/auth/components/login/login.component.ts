@@ -49,4 +49,8 @@ export class LoginComponent {
         },
       });
   }
+
+  goto(route:string ){
+    this.router.navigate([route]);
+  }
 }

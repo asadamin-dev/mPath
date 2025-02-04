@@ -5,13 +5,18 @@ import { PatientLoginComponent } from './components/patient-login/patient-login.
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginComponent,
   },
   {
     path: 'patient-login',
     component: PatientLoginComponent,
   },
+  {
+    path:'',
+    redirectTo:'patient-login',
+    pathMatch:'full'
+  }
 ];
 
 @NgModule({

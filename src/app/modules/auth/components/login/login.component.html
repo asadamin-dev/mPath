@@ -27,6 +27,8 @@
                         </button>
                     </mat-form-field>
 
+                    <a (click)="goto('/auth/patient-login')">login as patient</a>
+
                     <!-- Login button -->
                     <button mat-raised-button color="primary" class="full-width">
                         Login Now
@@ -36,6 +38,6 @@
         </mat-card>
     </div>
     <div class="login-illustration">
-        <img src="assets/doc-pic.png" alt="Doctor with Family" />
+        <img src="assets/doc-pic.png" alt="Doctor with Family" class="doc-img" />
     </div>
 </div>
