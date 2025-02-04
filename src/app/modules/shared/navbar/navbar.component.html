@@ -1,1 +1,63 @@
-<p>navbar works!</p>
+<!-- <mat-toolbar class="navbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo" />
+  </div>
+
+  <span class="spacer"></span>
+
+  <div class="menu-container">
+    <nav class="menu">
+      <a mat-button routerLink="/home">Home</a>
+      <a mat-button routerLink="/">Link 2</a>
+    </nav>
+  </div>
+
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item (click)="changePassword()">Change Password</button>
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+    <img src="assets/User_02.svg" alt="Profile Icon" class="profile-icon" />
+  </button>
+</mat-toolbar> -->
+
+
+<mat-toolbar class="navbar">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo" />
+  </div>
+
+  <!-- Spacer to push menu/profile to the right -->
+  <span class="spacer"></span>
+
+  <!-- Desktop Menu -->
+  <div class="menu-container" *ngIf="!isMobile">
+    <nav class="menu">
+      <a mat-button routerLink="/home">Home</a>
+      <a mat-button routerLink="/">Link 2</a>
+
+    </nav>
+  </div>
+
+  <div class="menu-spacer" *ngIf="!isMobile"></div>
+
+  <button mat-icon-button class="menu-icon" [matMenuTriggerFor]="mobileMenu" *ngIf="isMobile">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #mobileMenu="matMenu">
+    <button mat-menu-item routerLink="/home">Home</button>
+    <button mat-menu-item routerLink="/">Link 2</button>
+  </mat-menu>
+
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item (click)="changePassword()">Change Password</button>
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="profileMenu" class="profile-btn">
+    <img src="assets/User_02.svg" alt="Profile Icon" class="profile-icon" />
+  </button>
+</mat-toolbar>

@@ -6,12 +6,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
-  declarations: [
-    NavbarComponent
-  ],
+  declarations: [NavbarComponent],
   imports: [
     CommonModule,
     MatInputModule,
@@ -19,9 +19,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    FormsModule,         
+    FormsModule,
     ReactiveFormsModule,
-
+    MatToolbarModule,
+    MatMenuModule,
   ],
   exports: [
     MatInputModule,
@@ -29,9 +30,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    FormsModule,         
+    FormsModule,
     ReactiveFormsModule,
-    NavbarComponent
-  ]
+    NavbarComponent,
+  ],
 })
 export class SharedModule {}

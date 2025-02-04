@@ -31,7 +31,7 @@ const routes: Routes = [
         canActivate: [authGuard],
         data: { roles: ['patient'] },
       },
-      { path: '', redirectTo: 'healthcare', pathMatch: 'full' },
+      // { path: '', redirectTo: 'admin', pathMatch: 'full' },
     ],
   },
 ];
